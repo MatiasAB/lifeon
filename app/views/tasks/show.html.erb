@@ -12,7 +12,12 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @task.status %>
+  <%= format_status(@task.status) %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

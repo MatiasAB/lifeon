@@ -18,6 +18,17 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
   end
+  
+  def status=(val)
+	if val == 'Not Started'
+		val = 0
+	elsif val == 'In Progress'
+		val = 1
+	elsif val == 'Completed'
+		val = 2
+	end
+	return val
+  end
 
   # POST /tasks or /tasks.json
   def create
@@ -64,6 +75,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :status)
+      params.require(:task).permit(:title, :description, :status, :user_id)
     end
 end
