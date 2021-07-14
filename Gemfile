@@ -53,7 +53,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap
-gem 'bootstrap', '~> 5.0.1'
-
-# j-query for bootstrap 
-gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 2.1'

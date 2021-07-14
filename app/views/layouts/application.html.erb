@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Life On Rails: <%= yield(:title) %></title>
-	<h1> Life On Rails </h1>
-	<h2> <%= yield(:title) %></h2>
+    <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,6 +11,25 @@
   </head>
 
   <body>
-    <%= yield %>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "Life on Rails", '#', id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Home",    '#' %></li>
+              <li><%= link_to "Help",    '#' %></li>
+              <li><%= link_to "Sign in", '#' %></li>
+			  <li><%= link_to "Sign up", '/users/new' %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+	
+	<div class="container">
+		<%= yield %>
+		<%= render 'layouts/footer' %>
+	</div>
   </body>
 </html>
