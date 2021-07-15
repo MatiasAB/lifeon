@@ -17,10 +17,14 @@
           <%= link_to "Life on Rails", '#', id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Help",    '#' %></li>
-              <li><%= link_to "Sign in", '#' %></li>
-			  <li><%= link_to "Sign up", '/users/new' %></li>
+              <li><%= link_to "Home", '/' %></li>
+			  <% if logged_in? %>
+				<li><%= link_to "Tasks", '#' %></li>
+				<li><%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+			  <% else %>
+                <li><%= link_to "Sign in", '/users/sign_in' %></li>
+			    <li><%= link_to "Sign up", '/users/sign_up' %></li>
+			  <% end %>
             </ul>
           </nav>
         </div>
