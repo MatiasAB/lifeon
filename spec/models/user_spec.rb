@@ -1,7 +1,10 @@
 require 'spec_helper'
+require 'support/database_cleaner'
+require 'devise'
 
 describe User do
-	before { @user = User.new(email: "user@example.com", password: 'password123', password_confirmation: 'password123', username: "ExampleUser") }
+	# before { @user = User.new(email: "user@example.com", password: 'password123', password_confirmation: 'password123', username: "ExampleUser") }
+	before { @user = FactoryBot.create(:user) }
 
     subject { @user }
 

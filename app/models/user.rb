@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attr_writer :login
   
+  has_many :tasks
+  
   before_save { |user| user.email = email.downcase }
   
   validates :username, presence: true, uniqueness: { case_sensitive: false }
