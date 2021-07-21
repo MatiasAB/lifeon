@@ -1,5 +1,21 @@
 
 <div class="hero-unit">
-  <h2><%= @user.username %></h2>
-  <p> Welcome to your profile page!</p>
+	<h2><%= @user.username %></h2>
+	<p> Welcome to your profile page!</p>
+  
+
+	<div class="section">
+		<h2> New Task </h2>
+		<%= render 'shared/task_form', task: @task %>
+	</div>
+	
+	<% if @user.tasks.any? %>
+		<div class="section">
+			<h3>Tasks (<%= @user.tasks.count %>)</h3>
+			<ol class="tasks">
+				<%= render @tasks %>
+			</ol>
+			<%= will_paginate @tasks %>
+		</div>
+	<% end %>
 </div>

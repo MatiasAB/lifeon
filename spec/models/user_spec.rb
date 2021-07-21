@@ -12,6 +12,7 @@ describe User do
     it { should respond_to(:email) }
 	it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
+	it { should respond_to(:tasks) }
 
     it { should be_valid }
 	
@@ -49,5 +50,20 @@ describe User do
           @user.should be_valid
         end
       end
+    end
+	
+	describe "task associations" do
+
+		before { @user.save }
+		
+		it "should destroy associated tasks" do
+		  FactoryBot.create_list(:task, 2, user: @user)
+		  tasks = @user.tasks.dup
+		  @user.destroy
+		  # tasks.should be_empty
+		  tasks.each do |task|
+			Task.find_by_id(task.id).should be_nil
+		  end
+		end
     end
 end

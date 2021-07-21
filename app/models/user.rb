@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   attr_writer :login
   
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   
   before_save { |user| user.email = email.downcase }
   

@@ -1,0 +1,13 @@
+<li>
+  <span class="title"><%= task.title %></span><br>
+  <% unless task.description.blank? %>
+	<span class="description"><p>Description: <%= task.description %></p></span><br>
+  <% end %>
+  <span class="status">Status: <%= task.status %></span><br>
+  <% unless task.start_date.blank? %>
+	<span class="start_date">Start Date: <%= task.start_date %></span><br>
+  <% end %>
+  <% unless task.end_date.blank? %>
+	<span class="end_date">End Date: <%= task.end_date %></span><br>
+  <% end %>
+</li>

@@ -31,8 +31,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Bootstrap
 gem 'bootstrap-sass', '~> 2.1'
 
-#Devise 
+# Devise 
 gem 'devise'
+
+# will_paginate
+gem 'will_paginate', '~> 3.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

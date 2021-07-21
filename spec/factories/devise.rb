@@ -8,7 +8,7 @@ FactoryBot.define do
   
   factory :task do
     sequence(:id) { |number| number }
-    sequence(:title) { |number| "example task #{number}"}
+    sequence(:title) { |number| "task#{number}"}
     status {0}
 	user
   end
