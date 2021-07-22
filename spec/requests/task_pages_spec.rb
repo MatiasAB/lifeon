@@ -31,4 +31,16 @@ RSpec.describe "TaskPages", type: :feature do
       end
     end
   end
+  
+  describe "task destruction" do
+	before { @task = FactoryBot.create(:task, user: user) }
+
+    describe "as user" do
+      before { visit user_path(user) }
+
+      it "should delete a task" do
+        expect { click_link @task.title }.to change(Task, :count).by(-1)
+      end
+    end
+  end
 end

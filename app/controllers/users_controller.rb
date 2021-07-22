@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 	  @task = Task.new
 	end
 	
+	
+	
 	# def create_tasks
 		# show
 		# @task = current_user.tasks.build(task_params)

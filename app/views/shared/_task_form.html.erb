@@ -1,5 +1,5 @@
 <div>
-	<%= form_with(model: task) do |form| %>
+	<%= form_with(model: task, method: method) do |form| %>
 	  <% if task.errors.any? %>
 		<div id="error_explanation">
 		  <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -14,31 +14,31 @@
 	  
 	  <div class="form-group">
 		<%= form.label :title %>
-		<%= form.text_field :title%>
+		<%= form.text_field :title, placeholder: @task.title %>
 	  </div>
 
 	  <div class="form-group">
 		<%= form.label :description %>
-		<%= form.text_area(:description, cols: 30, rows: 10) %>
+		<%= form.text_area(:description, cols: 30, rows: 10, placeholder: @task.description)%>
 	  </div>
 
 	  <div class="form-group">
 		<%= form.label :status %>
-		<%= form.select :status, ['Not Started', 'In Progress', 'Complete']%>
+		<%= form.select :status, ['Not Started', 'In Progress', 'Complete'], placeholder: format_status(@task.status)%>
 	  </div>
 	  
 	  <div class="form-group">
 		<%= form.label(:start_date, "Start Date") %>
-		<%= form.date_field :start_date%>
+		<%= form.date_field :start_date, placeholder: @task.start_date %>
 	  </div>
 	  
 	  <div class="form-group">
 		<%= form.label(:end_date, "End Date") %>
-		<%= form.date_field :end_date%>
+		<%= form.date_field :end_date, placeholder: @task.end_date%>
 	  </div>
 
 	  <div class="actions">
-		<%= form.submit "New Task" %>
+		<%= render 'shared/task_form_button', form: form, method: method %>
 	  </div>
 	<% end %>
 </div>

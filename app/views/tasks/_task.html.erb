@@ -1,13 +1,34 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <li>
   <span class="title"><%= task.title %></span><br>
   <% unless task.description.blank? %>
 	<span class="description"><p>Description: <%= task.description %></p></span><br>
   <% end %>
-  <span class="status">Status: <%= task.status %></span><br>
+  <span class="status">Status: <%= format_status(task.status) %></span><br>
   <% unless task.start_date.blank? %>
 	<span class="start_date">Start Date: <%= task.start_date %></span><br>
   <% end %>
   <% unless task.end_date.blank? %>
 	<span class="end_date">End Date: <%= task.end_date %></span><br>
   <% end %>
+  <button id="edit_<%= task.id %>"> Edit </button>
+  <%= link_to "Remove", task, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: task.title %>
 </li>
+
+<div  id="edit_<%= task.id %>_form" style="display:none">
+	<h4> Edit Task </h4>
+	<%= render 'shared/task_form', task: task, method: :put %>
+</div>
+
+<script type="text/javascript">
+  
+
+ $(document).ready(function() {
+
+       $('#edit_<%= task.id %>').on('click', function(evt) {
+    $('#edit_<%= task.id %>_form').toggle();
+});
+   });
+</script>

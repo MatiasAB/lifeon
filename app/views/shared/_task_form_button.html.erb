@@ -1,0 +1,6 @@
+<% if method.to_s == "create" %>
+	<%= form.submit "New Task" %>
+<% end %>
+<% if method.to_s == "put" %>
+	<%= form.submit "Update Task" %>
+<% end %>

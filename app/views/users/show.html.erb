@@ -6,7 +6,7 @@
 
 	<div class="section">
 		<h2> New Task </h2>
-		<%= render 'shared/task_form', task: @task %>
+		<%= render 'shared/task_form', task: @task, method: :create %>
 	</div>
 	
 	<% if @user.tasks.any? %>
