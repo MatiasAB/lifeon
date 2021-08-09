@@ -14,27 +14,27 @@
 	  
 	  <div class="form-group">
 		<%= form.label :title %>
-		<%= form.text_field :title, placeholder: @task.title %>
+		<%= form.text_field :title, placeholder: task.title %>
 	  </div>
 
 	  <div class="form-group">
 		<%= form.label :description %>
-		<%= form.text_area(:description, cols: 30, rows: 10, placeholder: @task.description)%>
+		<%= form.text_area(:description, cols: 30, rows: 10, placeholder: task.description)%>
 	  </div>
 
 	  <div class="form-group">
 		<%= form.label :status %>
-		<%= form.select :status, ['Not Started', 'In Progress', 'Complete'], placeholder: format_status(@task.status)%>
+		<%= form.select :status, ['Not Started', 'In Progress', 'Complete'], prompt: format_status(task.status)%>
 	  </div>
 	  
 	  <div class="form-group">
 		<%= form.label(:start_date, "Start Date") %>
-		<%= form.date_field :start_date, placeholder: @task.start_date %>
+		<%= form.date_field :start_date, placeholder: task.start_date %>
 	  </div>
 	  
 	  <div class="form-group">
 		<%= form.label(:end_date, "End Date") %>
-		<%= form.date_field :end_date, placeholder: @task.end_date%>
+		<%= form.date_field :end_date, placeholder: task.end_date%>
 	  </div>
 
 	  <div class="actions">

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 	  @user = current_user
 	  @tasks = @user.tasks.paginate :page => params[:page]
 	  @task = Task.new
+	  @task.status = 0
 	end
 	
 	

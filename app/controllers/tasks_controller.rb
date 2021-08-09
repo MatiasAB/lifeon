@@ -15,8 +15,25 @@ class TasksController < UsersController
 		return val
 	end
 	
+	def date_auto(task)
+		date = ""
+		if status == 1
+			date = "start_date"
+		elsif status = 2
+			date = "end_date"
+		end 
+		
+		task[date.to_sym] = task[date.to_sym].blank? ? Date.today : task[date.to_sym]
+		
+		return task 
+	end 
+		
+	
 	def create
 		params[:task][:status] = status_form(params[:task][:status])
+		
+		params[:task] = date_auto(params[:task])
+		
 		@task = current_user.tasks.build(task_params)
 		@user = current_user
 		@tasks = @user.tasks.paginate :page => params[:page]
@@ -33,6 +50,7 @@ class TasksController < UsersController
 	
 	def update
 		params[:task][:status] = status_form(params[:task][:status])
+		params[:task] = date_auto(params[:task])
 		redirect_to current_user.tasks.find(params[:id]).tap { |task|
 		  task.update!(task_params)
 		}
@@ -43,6 +61,12 @@ class TasksController < UsersController
 		@task.destroy
 		redirect_to current_user
 	end
+	
+	# def show 
+		# @task = current_user.tasks.find_by_id(params[:id])
+		# @ctask = Task.new
+		# @ctask.status = 0
+	# end
 	
 	private
 
